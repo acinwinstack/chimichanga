@@ -9,8 +9,12 @@ wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm?_ga=2
 mv vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446 vagrant2.0.1.rmp
 rpm -ivh vagrant_2.0.1_x86_64.rpm
 
-## install VirtualBox
-yum install VirtualBox-5.2
+# install VirtualBox
+yum install -y gcc
+yum install -y kernel-devel
+wget http://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
+mv virtualbox.repo /etc/yum.repos.d/
+yum -y install VirtualBox-5.2
 
 ## clone all repos
 #### git clone https://github.com/acinwinstack/docker-registry.git
