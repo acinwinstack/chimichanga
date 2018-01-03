@@ -1,3 +1,0 @@
-[submodule "kube-ansible"]
-	path = kube-ansible
-	url = https://github.com/acinwinstack/kube-ansible.git
