@@ -42,27 +42,25 @@ vagrant up
 vagrant halt
 
 ## deploy docker-registry node
-cd docker-registry
-#### vagrant up
-vagrant ssh
+cd ~/chimichanga/docker-registry
+vagrant up
 
-
+## vagrant ssh
 ## pull necessary images
 #### docker pull python
 #### docker pull redis
 #### docker pull mongodb
 #### docker pull nginx
 
-#### vagrant halt
+vagrant halt
 
 
 
 
 
-## deploy k8s lab nodes
+# deploy k8s lab nodes
 cd ../kube-ansible
-#### vagrant up
-#### vagrant halt
+./tools/setup 
 
 ## setup troubleshooting namespace and apps
 #### kubectl create --type namespace --name ts
