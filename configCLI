@@ -1,9 +1,12 @@
-## install Ansible
-## yum-repo: "https://releases.ansible.com/ansible/rpm/"
+# install git
+yum install -y git
+
+# install Ansible
 yum install -y ansible
 
-## install Vagrant 
+# install Vagrant 
 wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446
+mv vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446 vagrant2.0.1.rmp
 rpm -ivh vagrant_2.0.1_x86_64.rpm
 
 ## install VirtualBox
