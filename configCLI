@@ -16,6 +16,9 @@ sudo wget http://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
 sudo mv virtualbox.repo /etc/yum.repos.d/
 sudo yum -y install VirtualBox-5.2
 
+# install docker
+curl -fsSL "https://get.docker.com/" | sh
+
 # clone all repos
 cd ~
 git clone https://github.com/acinwinstack/chimichanga.git
@@ -28,8 +31,13 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.24.1/minik
 minikube start
 minikube stop
 
-## deploy k8s manual installation lab nodes
-cd ~/chimichanga/kube-manual
+# deploy k8s manual installation lab nodes
+cd ~/chimichanga/k8s-manual
+vagrant up
+vagrant halt
+
+# deploy k8s kubeadm installation lab nodes
+cd ~/chimichanga/k8s-kubeadm
 vagrant up
 vagrant halt
 
@@ -38,8 +46,6 @@ cd docker-registry
 #### vagrant up
 vagrant ssh
 
-## install docker
-curl -fsSL "https://get.docker.com/" | sh
 
 ## pull necessary images
 #### docker pull python
@@ -52,10 +58,6 @@ curl -fsSL "https://get.docker.com/" | sh
 
 
 
-## deploy k8s kubeadm installation lab nodes
-cd ../kube-kubeadm
-#### vagrant up
-#### vagrant halt
 
 ## deploy k8s lab nodes
 cd ../kube-ansible
