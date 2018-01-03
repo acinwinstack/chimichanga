@@ -1,0 +1,10 @@
+.vagrant
+.DS_Store
+*.retry
+tmp
+tmp/*
+hosts
+*.ovpn
+inventory
+.keys/
+.venv/
