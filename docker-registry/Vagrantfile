@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
   end
 
   private_count = 10
-  (1..(master + node)).each do |mid|
+  (1..(1)).each do |mid|
     name = "registry"
 
     config.vm.define "#{name}" do |n|
