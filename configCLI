@@ -7,7 +7,7 @@ sudo yum install -y ansible
 # install Vagrant 
 sudo wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446
 sudo mv vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446 vagrant2.0.1.rmp
-sudo rpm -ivh vagrant_2.0.1_x86_64.rpm
+sudo rpm -ivh vagrant_2.0.1.rpm
 
 # install VirtualBox
 sudo yum install -y gcc
@@ -26,8 +26,8 @@ git clone https://github.com/acinwinstack/chimichanga.git
 # deploy minikube
 cd ~
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-chmod +x /home/user/kubectl
-sudo mv /home/user/kubectl /usr/local/bin/kubectl
+chmod +x ~/kubectl
+sudo mv ~/kubectl /usr/local/bin/kubectl
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.24.1/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 minikube start
 minikube stop
