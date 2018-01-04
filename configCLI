@@ -7,7 +7,7 @@ sudo yum install -y ansible
 
 # install Vagrant 
 sudo wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446
-sudo mv vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446 vagrant2.0.1.rmp
+sudo mv vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446 vagrant2.0.1.rpm
 sudo rpm -ivh vagrant2.0.1.rpm
 
 # install VirtualBox
