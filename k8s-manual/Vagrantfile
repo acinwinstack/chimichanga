@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
       n.vm.network :private_network, ip: "#{ip_addr}",  auto_config: true
 
       n.vm.provider :virtualbox do |vb, override|
-        vb.name = "k8s-manual#{n.vm.hostname}"
+        vb.name = "k8s-manual-#{n.vm.hostname}"
         set_vbox(vb, override)
       end
       private_count += 1

@@ -24,6 +24,7 @@ curl -fsSL "https://get.docker.com/" | sh
 cd ~
 git clone https://github.com/acinwinstack/chimichanga.git
 
+###########################################
 # deploy minikube
 cd ~
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -33,16 +34,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.24.1/minik
 minikube start
 minikube stop
 
-# deploy k8s manual installation lab nodes
-cd ~/chimichanga/k8s-manual
-vagrant up
-vagrant halt
-
-# deploy k8s kubeadm installation lab nodes
-cd ~/chimichanga/k8s-kubeadm
-vagrant up
-vagrant halt
-
+###########################################
 ## deploy docker-registry node
 cd ~/chimichanga/docker-registry
 vagrant up
@@ -56,13 +48,47 @@ vagrant up
 
 vagrant halt
 
+###########################################
+# deploy k8s manual installation lab nodes
+cd ~/chimichanga/k8s-manual
+vagrant up
+vagrant halt
+
+vboxmanage modifyvm k8s-manual-master1 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-manual-master1 --nic3 hostonly
+vboxmanage modifyvm k8s-manual-node1 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-manual-node1 --nic3 hostonly
+vboxmanage modifyvm k8s-manual-node2 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-manual-node2 --nic3 hostonly
 
 
+###########################################
+# deploy k8s kubeadm installation lab nodes
+cd ~/chimichanga/k8s-kubeadm
+vagrant up
+vagrant halt
+
+vboxmanage modifyvm k8s-kubeadm-master1 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-kubeadm-master1 --nic3 hostonly
+vboxmanage modifyvm k8s-kubeadm-node1 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-kubeadm-node1 --nic3 hostonly
+vboxmanage modifyvm k8s-kubeadm-node2 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-kubeadm-node2 --nic3 hostonly
 
 
+###########################################
 # deploy k8s lab nodes
-#cd ../kube-ansible
-#./tools/setup 
+cd ~/chimichanga/kube-ansible
+./tools/setup 
 
 ## setup troubleshooting namespace and apps
 #### kubectl create --type namespace --name ts
+
+vagrant halt
+
+vboxmanage modifyvm k8s-master1 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-master1 --nic3 hostonly
+vboxmanage modifyvm k8s-node1 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-node1 --nic3 hostonly
+vboxmanage modifyvm k8s-node2 --hostonlyadapter3 vboxnet1
+vboxmanage modifyvm k8s-node2 --nic3 hostonly
