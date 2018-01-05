@@ -76,3 +76,9 @@ vboxmanage modifyvm k8s-kubeadm-node2 --hostonlyadapter3 vboxnet1
 vboxmanage modifyvm k8s-kubeadm-node2 --nic3 hostonly
 
 
+###########################################
+# clean up
+cd ~
+cp ~/chimichanga/kube-ansible.sh ~/kube-ansible.sh
+rm -rf ~/chimichanga
+
