@@ -23,6 +23,7 @@ curl -fsSL "https://get.docker.com/" | sh
 # clone all repos
 cd ~
 git clone https://github.com/acinwinstack/chimichanga.git
+git clone https://github.com/acinwinstack/k8s101-course-content.git
 
 ###########################################
 # deploy minikube
@@ -52,6 +53,11 @@ vagrant halt
 # deploy k8s manual installation lab nodes
 cd ~/chimichanga/k8s-manual
 vagrant up
+
+scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.10:~/
+scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.11:~/
+scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.12:~/
+
 vagrant halt
 
 vboxmanage modifyvm k8s-manual-master1 --hostonlyadapter3 vboxnet1
@@ -78,7 +84,4 @@ vboxmanage modifyvm k8s-kubeadm-node2 --nic3 hostonly
 
 ###########################################
 # clean up
-cd ~
-cp ~/chimichanga/kube-ansible.sh ~/kube-ansible.sh
-rm -rf ~/chimichanga
-
+mv ~/chimichanga ~/k8101env
