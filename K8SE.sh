@@ -35,8 +35,11 @@ cd ~/chimichanga/k8s-manual
 vagrant up
 
 scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.10:~/
+ssh vagrant@172.16.33.10 'sh ~/init.sh'
 scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.11:~/
+ssh vagrant@172.16.33.11 'sh ~/init.sh'
 scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.12:~/
+ssh vagrant@172.16.33.12 'sh ~/init.sh'
 
 vagrant suspend
 
