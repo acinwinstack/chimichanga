@@ -21,12 +21,12 @@ minikube stop
 #cd ~/chimichanga/docker-registry
 #vagrant up
 
-## vagrant ssh
-## pull necessary images
-#### docker pull python
-#### docker pull redis
-#### docker pull mongodb
-#### docker pull nginx
+#vagrant ssh
+#pull necessary images
+#docker pull python
+#docker pull redis
+#docker pull mongodb
+#docker pull nginx
 #vagrant halt
 
 ###########################################
@@ -43,27 +43,11 @@ ssh vagrant@172.16.33.12 'sh ~/init.sh'
 
 vagrant suspend
 
-#vboxmanage modifyvm k8s-manual-master1 --hostonlyadapter3 vboxnet1
-#vboxmanage modifyvm k8s-manual-master1 --nic3 hostonly
-#vboxmanage modifyvm k8s-manual-node1 --hostonlyadapter3 vboxnet1
-#vboxmanage modifyvm k8s-manual-node1 --nic3 hostonly
-#vboxmanage modifyvm k8s-manual-node2 --hostonlyadapter3 vboxnet1
-#vboxmanage modifyvm k8s-manual-node2 --nic3 hostonly
-
-
 ###########################################
 # deploy k8s kubeadm installation lab nodes
 cd ~/chimichanga/k8s-kubeadm
 vagrant up
 vagrant suspend
-
-#vboxmanage modifyvm k8s-kubeadm-master1 --hostonlyadapter3 vboxnet1
-#vboxmanage modifyvm k8s-kubeadm-master1 --nic3 hostonly
-#vboxmanage modifyvm k8s-kubeadm-node1 --hostonlyadapter3 vboxnet1
-#vboxmanage modifyvm k8s-kubeadm-node1 --nic3 hostonly
-#vboxmanage modifyvm k8s-kubeadm-node2 --hostonlyadapter3 vboxnet1
-#vboxmanage modifyvm k8s-kubeadm-node2 --nic3 hostonly
-
 
 ###########################################
 # clean up
@@ -71,4 +55,3 @@ mv ~/chimichanga ~/k8s101env
 
 
 ifconfig |grep 172.24.0.
-
