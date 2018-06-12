@@ -45,9 +45,9 @@ vagrant suspend
 
 ###########################################
 # deploy k8s kubeadm installation lab nodes
-cd ~/chimichanga/k8s-kubeadm
-vagrant up
-vagrant suspend
+#cd ~/chimichanga/k8s-kubeadm
+#vagrant up
+#vagrant suspend
 
 ###########################################
 # clean up
