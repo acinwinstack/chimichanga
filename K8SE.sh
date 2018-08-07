@@ -43,6 +43,10 @@ vagrant suspend
 ## lab removed
 
 ###########################################
+# Practical Kubernetes Labs
+cp ~/k8s101-course-content/K8S101_Ch4_PracticalKubernetes/PracticalApps/ ~/Desktop/Ch4_PracticalApps/
+
+###########################################
 # clean up
 mv ~/chimichanga ~/k8s101env
 
