@@ -24,7 +24,7 @@ minikube stop
 ###########################################
 # minikube lab app.py
 mkdir -p ~/Desktop/02_Minikube/build/
-cp ~/k8s101-course-content/K8S101_Ch2_KubernetesIntro/minikube_lab/workshop/build/app.py ~/Desktop/minikube/build/app.py
+cp ~/k8s101-course-content/K8S101_Ch2_KubernetesIntro/minikube_lab/workshop/build/app.py ~/Desktop/02_Minikube/build/app.py
 
 ###########################################
 # deploy k8s manual installation lab nodes
