@@ -1,10 +1,15 @@
 #!/bin/bash -v
 
-
 # clone all repos
 cd ~
 git clone https://github.com/acinwinstack/chimichanga.git
 git clone https://github.com/acinwinstack/k8s101-course-content.git
+
+##########################################
+# docker lab app.py
+mkdir -p ~/Desktop/Docker/lab/
+cp ~/k8s101-course-content/K8S101_Ch1_Docker/docker_getstartedlab/lab1/app.py ~/Desktop/Docker/lab/app.py
+echo "app.py Downloaded for Ch1 Docker Lab"
 
 ##########################################
 # deploy minikube
@@ -17,41 +22,28 @@ minikube start
 minikube stop
 
 ###########################################
-## deploy docker-registry node
-#cd ~/chimichanga/docker-registry
-#vagrant up
-
-#vagrant ssh
-#pull necessary images
-#docker pull python
-#docker pull redis
-#docker pull mongodb
-#docker pull nginx
-#vagrant halt
+# minikube lab app.py
+mkdir -p ~/Desktop/minikube/build/
+cp ~/k8s101-course-content/K8S101_Ch2_KubernetesIntro/minikube_lab/workshop/build/app.py ~/Desktop/minikube/build/app.py
 
 ###########################################
 # deploy k8s manual installation lab nodes
 cd ~/chimichanga/k8s-manual
 vagrant up
-
-scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.10:~/
-ssh vagrant@172.16.33.10 'sh ~/init.sh'
-scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.11:~/
-ssh vagrant@172.16.33.11 'sh ~/init.sh'
-scp -r ~/k8s101-course-content/K8S101_Ch3_K8sManualInstallation/* vagrant@172.16.33.12:~/
-ssh vagrant@172.16.33.12 'sh ~/init.sh'
-
 vagrant suspend
 
-###########################################
-# deploy k8s kubeadm installation lab nodes
-#cd ~/chimichanga/k8s-kubeadm
-#vagrant up
-#vagrant suspend
+##########################################
+# deploy kubeadm installation lab nodes
+
+## lab removed
+
+##########################################
+# deploy docker registry ndoe
+
+## lab removed
 
 ###########################################
 # clean up
 mv ~/chimichanga ~/k8s101env
-
 
 ifconfig |grep 172.24.0.
