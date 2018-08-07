@@ -44,10 +44,11 @@ vagrant suspend
 
 ###########################################
 # Practical Kubernetes Labs
-cp ~/k8s101-course-content/K8S101_Ch4_PracticalKubernetes/PracticalApps/ ~/Desktop/Ch4_PracticalApps/
+cp -rf ~/k8s101-course-content/K8S101_Ch4_PracticalKubernetes/PracticalApps/ ~/Desktop/Ch4_PracticalApps/
 
 ###########################################
 # clean up
-mv ~/chimichanga ~/k8s101env
+rm -rf ~/chimichanga
+rm ~/K8SE.sh
 
 ifconfig |grep 172.24.0.
