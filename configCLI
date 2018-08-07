@@ -1,11 +1,58 @@
-#!/bin/bash -v
+#platform=x86, AMD64, or Intel EM64T
+#version=DEVEL
+# Install OS instead of upgrade
+install
+autostep
+# Keyboard layouts
+keyboard 'us'# Reboot after installation
+reboot
+# Root password
+rootpw "K8S"
+user --groups=wheel --homedir=/home/user --name=user --password=K8S --gecos="user"
+# System timezone
+timezone Asia/Taipei --ntpservers=172.20.0.22
+# Use network installation
+url --url="http://172.24.0.2/centos7"
+# System language
+lang en_US
+# Firewall configuration
+firewall --enabled --ssh --service=ssh
+# Network information
+network  --bootproto=dhcp --device=
+# System authorization information
+auth  --useshadow  --passalgo=sha512
+# Use graphical install
+graphical
+# Run the Setup Agent on first boot
+firstboot --enable
+# SELinux configuration
+selinux --enforcing
+
+# System bootloader configuration
+#bootloader --location=mbr --driveorder=sda
+#bootloader --location=none
+# Clear the Master Boot Record
+#zerombr
+
+# Partition clearing information
+clearpart --drives=sda --all --initlabel
+#ignoredisk --only-use=sda
+autopart
+%packages
+@^graphical-server-environment
+-@office-suite
+-libreoffice*
+%end
+%post
+yum update -y
+
 # install git
 sudo yum install -y git
 
 # install Ansible
 sudo yum install -y ansible
 
-# install Vagrant
+# install Vagrant 
 sudo wget https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446
 sudo mv vagrant_2.0.1_x86_64.rpm?_ga=2.266151311.1084437012.1514875446-738854030.1514875446 vagrant2.0.1.rpm
 sudo rpm -ivh vagrant2.0.1.rpm
@@ -19,6 +66,20 @@ sudo yum -y install VirtualBox-5.2
 
 # install docker
 curl -fsSL "https://get.docker.com/" | sh
+sudo systemctl start docker
+sudo systemctl enable docker
 
-# install docker-machine
+# Install Docker-Machine
 base=https://github.com/docker/machine/releases/download/v0.14.0 && curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine && sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+
+#RDP install 
+yum install epel-release -y
+yum install xrdp -y
+systemctl start xrdp.service
+systemctl enable xrdp.service
+wget http://172.24.0.2/sh/K8SE.sh
+mv K8SE.sh /home/user/
+chmod a+x /home/user/K8SE.sh
+wget http://172.24.0.2/sh/K8SFW.sh
+
+%end
